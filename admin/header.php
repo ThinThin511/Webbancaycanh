@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADMIN</title>
-    <link rel="stylesheet" href="../CSS/viewcss.css">
+    <link rel="stylesheet" href="../view/CSS/viewcss.css">
 </head>
 <body>
     <div class="boxcenter">
