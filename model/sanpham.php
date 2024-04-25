@@ -9,12 +9,13 @@ function delete_sanpham($id){
     $sql="delete from sanpham where id=".$id;
     pdo_execute($sql);
 }
-function loadall_sanpham(){
-    $sql="select * from danhmuc order by id desc";
-    $listsanpham=pdo_query($sql);
-    return $listsanpham;
-}
-function search_sanpham($kyw,$iddm){
+
+// function loadall_sanpham(){
+//     $sql="select * from danhmuc order by id desc";
+//     $listsanpham=pdo_query($sql);
+//     return $listsanpham;
+// }
+function loadall_sanpham($kyw,$iddm){
     $sql="select * from sanpham where 1";
     if($kyw!=""){
         $sql.=" and name like '%".$kyw."%'";
@@ -33,8 +34,11 @@ function loadone_sanpham($id){
     return $dm;
 }
 
-function update_sanpham($id,$tenloai){
-    $sql="update sanpham set name='".$tenloai."' where id=".$id;
+function update_sanpham($id,$tensp,$giasp,$filename,$mota,$iddm){
+    if($filename!="")
+        $sql="update sanpham set name='".$tensp."', price='".$giasp."', mota='".$mota."', iddm='".$iddm."', img='".$filename."' where id=".$id;
+    else 
+        $sql="update sanpham set name='".$tensp."', price='".$giasp."', mota='".$mota."', iddm='".$iddm."' where id=".$id;
     pdo_execute($sql);
 }
 ?>

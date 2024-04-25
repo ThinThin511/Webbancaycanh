@@ -85,7 +85,7 @@
                     $iddm=0;
                 }
                 $listdanhmuc=loadall_danhmuc();
-                $listsanpham=search_sanpham($kyw,$iddm);
+                $listsanpham=loadall_sanpham($kyw,$iddm);
                 include "sanpham/list.php";
                 break;
             
@@ -94,27 +94,38 @@
                     delete_sanpham($_GET['id']);
                 }
                 
-                $listsanpham=loadall_sanpham();
+                $listsanpham=loadall_sanpham("",0);
                 include "sanpham/list.php";
                 break;
             
             case 'suasp':
                 if(isset($_GET['id'])&&($_GET['id']>0)){
-                    $dm=loadone_sanpham($_GET['id']);
+                    $sanpham=loadone_sanpham($_GET['id']);
                 }
-                
+                $listdanhmuc=loadall_danhmuc();
                 include "sanpham/update.php";
                 break;
             
             case 'updatesp':
                 if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
-                    $tenloai=$_POST['tenloai'];
                     $id=$_POST['id'];
-                    update_sanpham($id,$tenloai);
+                    $tensp=$_POST['tensp'];
+                    $iddm=$_POST['iddm'];
+                    $giasp=$_POST['giasp'];
+                    $mota=$_POST['mota'];
+                    $filename=$_FILES['anhsp']['name'];
+                    $target_dir = "../upload/";
+                    $target_file = $target_dir . basename($_FILES["anhsp"]["name"]);
+                    if (move_uploaded_file($_FILES["anhsp"]["tmp_name"], $target_file)) {
+                        // echo "The file ". htmlspecialchars( basename( $_FILES["anhsp"]["name"])). " has been uploaded.";
+                      } else {
+                        // echo "Sorry, there was an error uploading your file.";
+                      }
+                    update_sanpham($id,$tensp,$giasp,$filename,$mota,$iddm);
                     $thongbao="Cập nhật thành công";
                 }
-                
-                $listsanpham=loadall_sanpham();
+                $listdanhmuc=loadall_danhmuc();
+                $listsanpham=loadall_sanpham("",0);
                 include "sanpham/list.php";
                 break;
 
