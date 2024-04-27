@@ -18,7 +18,7 @@
                         ?>
                 
             </div>
-            <div class="col-6 text-center" >
+            <div class="col-6 text-center lienhe" >
                 <div class="text-success title mb-5">
                     THEO DÕI CHÚNG TÔI QUA: 
                 </div>

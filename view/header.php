@@ -13,7 +13,7 @@
   <div class="container">
   <nav class="navbar navbar-expand-lg bg-body-tertiary" id="header">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"> <img src="./view/images/Logo.PNG" width="100" height="100"></a>
+      <a class="navbar-brand" href="#"> <img src="./view/images/Logo.PNG" width="100" height="100" style="border-radius: 99%; border: 1px solid green"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -40,8 +40,8 @@
             <a class="nav-link " href="index.php?act=lienhe">Liên hệ</a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Tìm kiếm..." aria-label="Search">
+        <form class="d-flex" role="search" action="index.php?act=sanpham" method="post">
+          <input class="form-control me-2" type="search" name="kyw" placeholder="Tìm kiếm..." aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Tìm</button>
         </form>
       </div>

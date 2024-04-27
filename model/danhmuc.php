@@ -21,6 +21,17 @@ function loadone_danhmuc($id){
     $dm=pdo_query_one($sql);
     return $dm;
 }
+function load_ten_danhmuc($iddm){
+    if($iddm>0){
+        $sql="select * from danhmuc where id=".$iddm;
+        $dm=pdo_query_one($sql);
+        extract($dm);
+        return $name;
+    }else{
+        return "SẢN PHẨM TÌM KIẾM";
+    }
+    
+}
 
 function update_danhmuc($id,$tenloai){
     $sql="update danhmuc set name='".$tenloai."' where id=".$id;

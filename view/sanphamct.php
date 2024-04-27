@@ -13,10 +13,39 @@
                     <div class="col-6 content-img">
                         <img src="<?=$hinh?>" alt="..." style="min-height: 320px; max-height: 320px;width: 100%;">
                     </div>
-                    <div class="col-6 d-flex">
-                        <p class="fs-1">Giá bán: </p>
-                        <p class="text-danger fs-1">&nbsp <?=$price?><sup>đ</sup></p>
+                    <div class="col-6 ">
+                        <div class="d-flex">
+                            <p class="fs-1">Giá bán: </p>
+                            <p class="text-danger fs-1">&nbsp <?=$price?><sup>đ</sup></p>
+                        </div>
                         
+                        <form action="index.php?act=addtocart" method="post" class="row align-items-center">
+                            <!-- Cột chứa input số lượng -->
+                            <div class="">
+                                <div class="row align-items-center">
+                                    <!-- Label số lượng -->
+                                    <div class="col-md-4">
+                                        <label for="soluong" class="form-label">Số lượng:</label>
+                                    </div>
+                                    <!-- Input số lượng -->
+                                    <div class="col-md-8">
+                                        <input type="number" class="form-control" id="quantity" name="soluong" placeholder="Nhập số lượng" required>
+                                        <input type="hidden" name="id" value="<?=$id?>">
+                                        <input type="hidden" name="hinh" value="<?=$hinh?>">
+                                        <input type="hidden" name="gia" value="<?=$price?>">
+                                        <input type="hidden" name="ten" value="<?=$name?>">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Cột chứa nút "Thêm vào giỏ hàng" -->
+                            <div class=" button d-flex justify-content-end mt-5 ">
+                                <button type="submit" name="addtocart" class="btn btn-success btn-block btn-sm  g-start-3 fs-5"> <i class="fa-solid fa-cart-shopping "></i> THÊM VÀO GIỎ HÀNG</button>
+                            </div>
+                        </form>
+
+
+
                         
                     </div>
                 </div>
