@@ -1,83 +1,131 @@
-.login-button {
-    background-color: #009970;
-    color: #fff;
-    font-size: 14pt;
-    padding: 8px 20px;
-    border-radius: 50px;
+body{
+    background-color: rgb(255, 255, 244) !important;
+    
+}
+.card a{
     text-decoration: none;
-    transition: 0.3s background-color;
+    color: black;
 }
 
-.login-button:hover{
-    background-color: #00b383;
-
+footer{
+    margin-top: 200px;
+    background-color: rgb(171, 171, 171);
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-top: 2px solid rgb(170, 170, 170);
 }
-
-.navbar{
-    background-color: #fff;
-    height: 80px;
-    margin: 20px;
-    border-radius: 16px;
-    padding: 0.5rem;
+.col-3 a {
+    display: block; /* Thiết lập các phần tử a thành dạng block */
+    margin-top: 5px;
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
 }
-.navbar-toggler{
-    border: none;
-    font-size: 1.25rem;
+.col-6 i {
+    
+    font-size: 50px;
+    margin-left: 20px;
 }
-
-.navbar-toggler:focus, .btn-close:focus {
-    box-shadow: none;
-    outline: none;
+.col-3 a:hover {
+    
+    color: rgb(3, 152, 0);
+    
 }
-
-.nav-link {
-    color:#666777 ;
+.title{
+    font-size: 28px;
     font-weight: 500;
+    margin-bottom: 10px;
 }
-
-.nav-link:hover,.nav-link:active{
-    color: #000;
+#img-ft{
+    border-radius: 99%;
+    border: 1px solid green;
 }
-@media (min-width:991px){
-    .nav-link::before{
-        content: "";
-        position: absolute;
-        bottom:0 ;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 0;
-        height: 2px;
-        background-color: #009970;
-        visibility: hidden;
-        transition: 0.3s ease-in-out;
-    }
-
-    .nav-link:hover::before, .nav-link.active::before{
-        width: 100%;
-        visibility: visible;
-    }
+#content{
+    margin-top: 200px !important;
 }
-
-.navbar-brand{
-    font-weight: 500;
-    color: #009970;
-    font-size: 24px;
-    transition: 0.3s color;
-}
-
-.hero-section{
-    background: url(../images/hinh-nen-cay-xanh-6.webp) no-repeat center;
-    background-size: cover;
-    width: 100%;
-    height: 100vh;
-}
-
-.hero-section::before{
-    background-color: rgba(0, 0, 0, 0.6) ;
-    content: "";
-    position: absolute;
+#header{
+    position: fixed;
     top: 0;
-    bottom: 0;
     left: 0;
     right: 0;
+    z-index: 1;
+}
+.navbar {
+    border: 1px solid #01b446; /* Màu viền và độ dày */
+    border-radius: 10px; 
+}
+
+/* Thêm hiệu ứng đổ bóng */
+.navbar {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1); 
+}
+.navbar-nav .nav-link {
+    font-size: 25px; /* Kích thước font mong muốn */
+}
+.navbar-nav .nav-link:hover {
+    color: #0ba436; /* Màu chữ khi hover */
+    text-decoration: underline; /* Gạch chân */
+}
+#carouselExampleAutoplaying {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Đổ bóng */
+}
+
+/* Thêm viền cho carousel */
+#carouselExampleAutoplaying {
+    border: 1px solid #bababa; /* Màu viền và độ dày */
+    border-radius: 10px; /* Độ cong của viền */
+}
+
+/* Hiệu ứng đổ bóng cho card */
+.card {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Đổ bóng */
+}
+
+/* Thêm viền cho card */
+.card {
+    border: 1px solid #ababab; /* Màu viền và độ dày */
+    border-radius: 10px; /* Độ cong của viền */
+}
+.carousel-item img {
+    height: 400px; /* Chiều cao mong muốn */
+    width: 100%; /* Đảm bảo hình ảnh không bị biến dạng */
+    border-radius: 10px;
+}
+.card-header {
+    background-color: #00c939 !important; /* Màu xanh */
+    color: white !important; /* Màu chữ trắng */
+    text-align: center; /* Căn giữa nội dung */
+}
+
+/* Xoá định dạng canh giữa cho thẻ a trong list-group-item */
+.list-group-item a {
+    text-decoration: none; 
+    color: black;
+}
+.list-group-item a:hover {
+     
+    color: rgb(0, 187, 59);
+}
+ .card-title:hover {
+    color: #00b238; /* Màu xanh */
+}
+.card img{
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+}
+.card{
+    overflow: hidden;
+}
+.card:hover img{
+    transform: scale(1.1);
+}
+.chitietsp{
+    background-color: white;
+    border: 1px solid green;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.content-img img{
+    border-radius: 10px;
+    border: 1px solid black;
 }

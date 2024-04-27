@@ -27,11 +27,32 @@ function loadall_sanpham($kyw,$iddm){
     $listsanpham=pdo_query($sql);
     return $listsanpham;
 }
+function loadall_sanpham_home(){
+    $sql="select * from sanpham where 1 order by id desc limit 0,8";
+    
+    
+    $listsanpham=pdo_query($sql);
+    return $listsanpham;
+}
+function loadall_sanpham_top(){
+    $sql="select * from sanpham where 1 order by luotxem desc limit 0,8";
+    
+    
+    $listsanpham=pdo_query($sql);
+    return $listsanpham;
+}
+function loadall_sanpham_lq($id, $iddm){
+    $sql = "SELECT * FROM sanpham WHERE iddm = ? AND id <> ? LIMIT 4";
+    
+    $listsanpham = pdo_query($sql, $iddm, $id);
+    return $listsanpham;
+}
+
 
 function loadone_sanpham($id){
     $sql="select * from sanpham where id=".$id;
-    $dm=pdo_query_one($sql);
-    return $dm;
+    $sp=pdo_query_one($sql);
+    return $sp;
 }
 
 function update_sanpham($id,$tensp,$giasp,$filename,$mota,$iddm){
