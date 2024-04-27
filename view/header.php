@@ -40,6 +40,22 @@
             <a class="nav-link " href="index.php?act=lienhe">Liên hệ</a>
           </li>
         </ul>
+        <?php
+          $tong=0;
+          $count = count($_SESSION['mycart']);
+          
+          foreach ($_SESSION['mycart'] as $cart) {
+              $ttien = (int)$cart[2] * (int)$cart[4];
+              $tong+=$ttien;
+              
+          }
+          
+        ?>
+        <div class="giohang-content">
+          <a href="index.php?act=viewcart" class="me-5 giohang"> <button class="btn btn-success btn-lg"><?=$tong?><sup>đ</sup> <i class="fa-solid fa-cart-shopping ms-2" ></i> </button></a>
+          <span id="nut"><?=$count?></span>
+        </div>
+        
         <form class="d-flex" role="search" action="index.php?act=sanpham" method="post">
           <input class="form-control me-2" type="search" name="kyw" placeholder="Tìm kiếm..." aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Tìm</button>

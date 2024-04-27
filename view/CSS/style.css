@@ -139,3 +139,22 @@ footer{
     border: 1px solid black;
     overflow: auto;
 }
+.giohang {
+    position: relative;
+    display: inline-block; /* Đảm bảo button giỏ hàng và span nằm trên cùng một dòng */
+}
+
+#nut {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border-radius: 50%;
+    position:relative;
+    top: -60px; /* Điều chỉnh top để span nằm trên cùng */
+    right: -135px; /* Điều chỉnh right để span nằm bên phải */
+    font-size: 14px; /* Điều chỉnh kích thước font của nút */
+}
