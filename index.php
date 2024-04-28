@@ -3,7 +3,9 @@
     include "model/pdo.php";
     include "model/sanpham.php";
     include "model/danhmuc.php";
+    include "model/cart.php";
     include "view/header.php";
+    
     include "global.php";
     
     if(!isset($_SESSION['mycart'])){
@@ -83,9 +85,35 @@
                 include "view/cart/viewcart.php";
                 break;
             case 'viewcart':
-                $thongbao = urldecode($_GET['thongbaoxoa']);
+                $thongbaos = urldecode($_GET['thongbaoxoa']);
                 
                 include "view/cart/viewcart.php";
+                break;
+            case 'bill':
+                
+                
+                include "view/cart/bill.php";
+                break;
+            case 'addbill':
+                if(isset($_POST['addbill'])){
+                    $ten=$_POST['ten'];
+                    $diachi=$_POST['diachi'];
+                    $sdt=$_POST['sdt'];
+                    $email=$_POST['email'];
+                    $ghichu=$_POST['ghichu'];
+                    $pttt=$_POST['pttt'];
+                    $ttien=$_POST['ttien'];
+                    $ngaydathang=date('h:i:sa d/m/Y');
+                    $iddonhang=insert_donhang($ten,$email,$sdt,$diachi,$ghichu,$pttt,$ttien,$ngaydathang);
+                    
+                    foreach ($_SESSION['mycart'] as $cart) {
+                        insert_ctdonhang($cart[0],$iddonhang,$cart[1],$cart[3],$cart[2],$cart[4]);
+                    }
+                    $_SESSION['mycart']=[];
+                }
+                $cthoadon=loadall_ctdonhang($iddonhang);
+                $hoadon=loadone_donhang($iddonhang);
+                include "view/cart/confirm.php";
                 break;
             case 'deletecart':
                 if(isset($_GET['idcart'])){

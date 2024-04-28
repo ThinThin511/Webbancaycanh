@@ -1,14 +1,48 @@
 
 <div class="container " id="content">
     <div class="row">
+        <h1 class="mb-4">THÔNG TIN GIAO HÀNG </h1>
         <div class="col-9">
-
+            <form class="fw-bold mb-5" method="POST" action="index.php?act=addbill">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Người đặt hàng:</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="ten" aria-describedby="emailHelp" required>
+                    
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Địa chỉ giao hàng:</label>
+                    <input type="text" class="form-control" name="diachi" id="exampleInputPassword1" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Số điện thoại:</label>
+                    <input type="text" class="form-control" name="sdt" id="exampleInputPassword1" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Email:</label>
+                    <input type="email" class="form-control" name="email" id="exampleInputPassword1" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Ghi chú:</label>
+                    <input type="text" class="form-control" name="ghichu" id="exampleInputPassword1" >
+                </div>
+                <div class="d-flex mb-5">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="pttt" value="Thanh toán khi nhận hàng" id="flexRadioDefault1" checked>
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Thanh toán khi nhận hàng
+                        </label>
+                    </div>
+                    <div class="form-check ms-5">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" disabled>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Thanh toán trực tuyến
+                        </label>
+                    </div>
+                </div>
+            
         
-            <h2 class="mb-4">Giỏ hàng <i class="fa-solid fa-cart-shopping"></i></h2>
-            <?php
-                        if(isset($thongbao)&&($thongbao!="")) echo '<h5 class="alert alert-success mt-2 mb-2 ">'.$thongbao.'</h5>';
-                        if(isset($thongbaos)&&($thongbaos!="")) echo '<h5 class="alert alert-danger mt-2 mb-2 ">'.$thongbaos.'</h5>';
-                    ?>
+            <h2 class="mb-4">Chi tiết đơn hàng <i class="fa-solid fa-cart-shopping"></i></h2>
+            
             <div class="table-responsive scrollable-content">
                 <table class="table table-striped">
                     
@@ -20,7 +54,7 @@
                             <th scope="col">Số lượng</th>
                             <th scope="col">Đơn giá</th>
                             <th scope="col">Thành tiền</th>
-                            <th scope="col">Thao tác</th>
+                            
                             
                         </tr>
                     </thead>
@@ -30,7 +64,7 @@
                             $i=0;
                             if(empty($_SESSION['mycart'])){
                                 echo'<tr class="text-center align-middle">
-                                <td colspan="7">
+                                <td colspan="6">
                                     Chưa có sản phẩm nào trong giỏ hàng. Tiếp tục mua sắm nhé!
                                 </td>
                             </tr>';
@@ -38,7 +72,7 @@
                             foreach ($_SESSION['mycart'] as $cart) {
                                 $ttien = (int)$cart[2] * (int)$cart[4];
                                 $tong+=$ttien;
-                                $xoasp='<a href="index.php?act=deletecart&idcart='.$i.'"><button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button></a>';
+                                
                                 echo'<tr class="text-center align-middle">
                                         <td>'.$i+'1'.'</td>
                                         <td><img src="'.$cart[1].'"  style="min-height: 80px; max-height: 80px; width:100%; max-width: 120px;min-width: 120px;"></td>
@@ -46,7 +80,7 @@
                                         <td>'.$cart[4].'</td>
                                         <td>'.$cart[2].'</td>
                                         <td>'.$ttien.'</td>
-                                        <td>'.$xoasp.'</td>
+                                        
                                     </tr>';
                                 $i+=1;
                             }
@@ -90,14 +124,17 @@
                 </td>
                 <td class="text-end">
                     <strong><?=$tong?><sup>đ</sup></strong>
+                    <input type="hidden" value="<?=$tong?>" name="ttien">
                 </td>
             </tr>
             <tr class="text-center align-middle">
                 <td colspan="2">
-                    <a href="index.php?act=bill"><button class="btn btn-warning">TIẾN HÀNH THANH TOÁN</button></a>
+                    <button type="submit" name="addbill" class="btn btn-warning"><strong>XÁC NHẬN THANH TOÁN</strong></button>
                 </td>
             </tr>
         </tbody>
+
+        </form>
     </table>
         </div>
     </div>
@@ -106,10 +143,10 @@
             <tbody>
                 <tr>
                     <td>
-                        <a href="index.php?act=deletecart"><button class="btn btn-danger btn-lg me-5">Xoá toàn bộ giỏ hàng</button></a>
+                        <a href="index.php?act=viewcart"><button class="btn btn-info btn-lg me-5"><i class="fa-solid fa-arrow-rotate-left"></i>Trở lại giỏ hàng</button></a>
                     </td>
                     <td class="text-end">
-                        <a href="index.php"><button class="btn btn-info btn-lg"><i class="fa-solid fa-arrow-rotate-left"></i> Tiếp tục mua sắm</button></a>
+                        <a href="index.php"><button class="btn btn-success btn-lg"><i class="fa-solid fa-cart-shopping " ></i> Tiếp tục mua sắm</button></a>
                     </td>
                 </tr>
             </tbody>
