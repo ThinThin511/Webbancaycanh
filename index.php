@@ -5,6 +5,7 @@
     include "model/danhmuc.php";
     include "model/cart.php";
     include "view/header.php";
+    include "phpmailer/sendmail.php";
     
     include "global.php";
     
@@ -111,6 +112,11 @@
                     }
                     $_SESSION['mycart']=[];
                 }
+                $email_content = "<p>Chào bạn {$ten}</p>
+                    <p>Bạn vừa đặt hàng thành công các sản phẩm tại CỬA HÀNG NỘI THẤT của chúng tôi.</p>
+                    <p>Đơn hàng sẽ được giao đến {$diachi} trong thời gian sớm nhất.</p> 
+                    <p>Tổng giá trị đơn hàng của bạn là : {$ttien} VNĐ.</p>";
+                send_mail($email,$ten,"Đặt hàng thành công!",$email_content);
                 $cthoadon=loadall_ctdonhang($iddonhang);
                 $hoadon=loadone_donhang($iddonhang);
                 include "view/cart/confirm.php";
