@@ -155,6 +155,12 @@ footer{
     border-radius: 50%;
     position:relative;
     top: -60px; /* Điều chỉnh top để span nằm trên cùng */
-    right: -135px; /* Điều chỉnh right để span nằm bên phải */
+    right: -180px; /* Điều chỉnh right để span nằm bên phải */
     font-size: 14px; /* Điều chỉnh kích thước font của nút */
+}
+#custom-btn{
+    
+        width: 200px; /* Chiều rộng */
+        height: 45px; /* Chiều cao */
+    
 }

@@ -55,10 +55,30 @@
                     $gia=$_POST['gia'];
                     $ten=$_POST['ten'];
                     $soluong=$_POST['soluong'];
-                    $spadd=[$id,$hinh,$gia,$ten,$soluong];
+                    $fg=0;
 
-                    array_push($_SESSION['mycart'],$spadd);
-                    $thongbao="Đã thêm $ten vào giỏ hàng!";
+                    //kiểm tra trùng
+                    $i=0;
+                    foreach ($_SESSION['mycart'] as $item) {
+                        if($item[3]===$ten){
+                            $slnew=$soluong+$item[4];
+                            $_SESSION['mycart'][$i][4]=$slnew;
+                            $fg=1;
+                            $thongbao="Đã cập nhật số lượng $ten vào giỏ hàng!";
+                            break;
+                        }
+                        $i++;
+                    }
+                    if($fg==0){
+                        $spadd=[$id,$hinh,$gia,$ten,$soluong];
+
+                        array_push($_SESSION['mycart'],$spadd);
+                        $thongbao="Đã thêm $ten vào giỏ hàng!";
+                    }
+
+
+                    
+                    
                 }
                 include "view/cart/viewcart.php";
                 break;

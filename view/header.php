@@ -41,6 +41,7 @@
           </li>
         </ul>
         <?php
+        if(isset($_SESSION['mycart'])){
           $tong=0;
           $count = count($_SESSION['mycart']);
           
@@ -49,12 +50,19 @@
               $tong+=$ttien;
               
           }
+          echo'<div class="giohang-content">
+          <a href="index.php?act=viewcart" class="me-5 giohang"> <button id="custom-btn" class="btn btn-success btn-lg">'.$tong.'<sup>đ</sup> <i class="fa-solid fa-cart-shopping ms-2" ></i> </button></a>
+          <span id="nut">'.$count.'</span>
+        </div>';
+        }else{
+          echo'<div class="giohang-content">
+          <a href="index.php?act=viewcart" class="me-5 giohang"> <button id="custom-btn" class="btn btn-success btn-lg">0<sup>đ</sup> <i class="fa-solid fa-cart-shopping ms-2" ></i> </button></a>
+          <span id="nut">0</span>
+        </div>';
+        }
           
         ?>
-        <div class="giohang-content">
-          <a href="index.php?act=viewcart" class="me-5 giohang"> <button class="btn btn-success btn-lg"><?=$tong?><sup>đ</sup> <i class="fa-solid fa-cart-shopping ms-2" ></i> </button></a>
-          <span id="nut"><?=$count?></span>
-        </div>
+        
         
         <form class="d-flex" role="search" action="index.php?act=sanpham" method="post">
           <input class="form-control me-2" type="search" name="kyw" placeholder="Tìm kiếm..." aria-label="Search">
