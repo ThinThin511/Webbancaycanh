@@ -1,16 +1,54 @@
 
 <div class="container ">
     <div class="row">
-       
-        
-            <h1 class="mb-1 text-center">CHI TIẾT ĐƠN HÀNG </h1>
+    <?php
+        if(isset($hoadon)){
+            extract($hoadon);
+        }
+    ?>
+    <h1 class="mb-1 text-center">CHI TIẾT ĐƠN HÀNG </h1>
+    <?php
+                        
+                        
+                        if(isset($thongbaos)&&($thongbaos!="")) echo '<h5 class="alert alert-danger mt-2 mb-2 ">'.$thongbaos.'</h5>';
+                    ?>
+            <form action="index.php?act=capnhatdh&iddh=<?=$id?>" method="POST">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="trangthai" id="flexRadioDefault1" value="0" <?php if($trangthai==0) echo"checked"; ?>>
+                    <label class="form-check-label" for="trangthai">
+                        Đơn hàng mới
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="trangthai" id="flexRadioDefault1" value="1" <?php if($trangthai==1) echo"checked"; ?>>
+                    <label class="form-check-label" for="trangthai">
+                        Đang xử lý
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="trangthai" id="flexRadioDefault1" value="2" <?php if($trangthai==2) echo"checked"; ?>>
+                    <label class="form-check-label" for="trangthai">
+                        Đang giao hàng
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="trangthai" id="flexRadioDefault1" value="3" <?php if($trangthai==3) echo"checked"; ?>>
+                    <label class="form-check-label" for="trangthai">
+                        Đã giao hàng
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="trangthai" id="flexRadioDefault1" value="4" <?php if($trangthai==4) echo"checked"; ?>>
+                    <label class="form-check-label" for="trangthai">
+                        Đã huỷ
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-warning">Cập nhật trạng thái</button>
+            </form>
+            
             <table class="table mt-5 ">
                 <tbody>
-                    <?php
-                        if(isset($hoadon)){
-                            extract($hoadon);
-                        }
-                    ?>
+                    
                         <td>
                             Mã đơn hàng
                         </td>

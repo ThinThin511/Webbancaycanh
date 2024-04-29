@@ -22,4 +22,51 @@
         $listdonhang=pdo_query($sql);
         return $listdonhang;
     }
+    function delete_ctdh($id){
+        $sql="delete from chitietdonhang where iddonhang=".$id;
+        pdo_execute($sql);
+    }
+    function delete_donhang($id){
+        delete_ctdh($id);
+        $sql="delete from donhang where id=".$id;
+        pdo_execute($sql);
+    }
+    function capnhat_donhang($id,$trangthai){
+        $sql="update donhang set trangthai='".$trangthai."' where id=".$id;
+        pdo_execute($sql);
+    }
+    function tru_soluong_sanpham($id_sanpham, $soluong_tru) {
+        $sanpham=loadone_sanpham($id_sanpham);
+        extract($sanpham);
+
+        $soluongmoi=$soluong-$soluong_tru;
+        $sql="update sanpham set soluong='".$soluongmoi."' where id=".$id_sanpham;
+        pdo_execute($sql);
+    }
+    function cong_soluong_sanpham($id_sanpham, $soluong_cong) {
+        $sanpham=loadone_sanpham($id_sanpham);
+        extract($sanpham);
+
+        $soluongmoi=$soluong+$soluong_cong;
+        $sql="update sanpham set soluong='".$soluongmoi."' where id=".$id_sanpham;
+        pdo_execute($sql);
+    }
+    function capnhat_donhangtru($iddh,$trangthai){
+        $chitietdh=loadall_ctdonhang($iddh);
+        foreach ($chitietdh as $ct) {
+            extract($ct);
+            tru_soluong_sanpham($idsp,$soluong);
+        }
+        $sql="update donhang set trangthai='".$trangthai."' where id=".$iddh;
+        pdo_execute($sql);
+    }
+    function capnhat_donhangcong($iddh,$trangthai){
+        $chitietdh=loadall_ctdonhang($iddh);
+        foreach ($chitietdh as $ct) {
+            extract($ct);
+            cong_soluong_sanpham($idsp,$soluong);
+        }
+        $sql="update donhang set trangthai='".$trangthai."' where id=".$iddh;
+        pdo_execute($sql);
+    }
 ?>

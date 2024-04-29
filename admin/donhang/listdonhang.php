@@ -2,6 +2,11 @@
     <div class="table-responsive ">
         <table id="donhang" class="table table-striped">
             <h2 class="text-center ">DANH DÁCH ĐƠN HÀNG</h2>
+            <?php
+                        
+                        if(isset($thongbao)&&($thongbao!="")) echo '<h5 class="alert alert-danger mt-2 mb-2 ">'.$thongbao.'</h5>';
+                        if(isset($thongbaos)&&($thongbaos!="")) echo '<h5 class="alert alert-success mt-2 mb-2 ">'.$thongbaos.'</h5>';
+                    ?>
             <thead>
                 <tr class=" align-middle">
                     <th scope="col">STT</th>
@@ -24,13 +29,13 @@
                         if($trangthai==0){
                             $tt='<p class="custom-bg-0">Đơn hàng mới</p>';
                         }elseif($trangthai==1){
-                            $tt='<p class="custom-bg-1">Đơn hàng mới</p>';
+                            $tt='<p class="custom-bg-1">Đang xử lý</p>';
                         }elseif($trangthai==2){
-                            $tt='<p class="custom-bg-2">Đơn hàng mới</p>';
+                            $tt='<p class="custom-bg-2">Đang giao hàng</p>';
                         }elseif($trangthai==3){
-                            $tt='<p class="custom-bg-3">Đơn hàng mới</p>';
+                            $tt='<p class="custom-bg-3">Đã giao hàng</p>';
                         }else{
-                            $tt='<p class="custom-bg-4">Đơn hàng mới</p>';
+                            $tt='<p class="custom-bg-4">Đã huỷ</p>';
                         }
                         $xoadh='<a href="index.php?act=deletedh&iddh='.$id.'"><button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button></a>';
                         $cthd='<a href="index.php?act=chitietdh&iddh='.$id.'"><button type="submit" class="btn btn-info">Xem chi tiết</button></a>';

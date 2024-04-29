@@ -148,6 +148,56 @@
                 $hoadon=loadone_donhang($dh);
                 include "donhang/ctdonhang.php";
                 break;
+            case 'deletedh':
+                if(isset($_GET['iddh'])&&($_GET['iddh']>0)){
+                    delete_donhang($_GET['iddh']);
+                    $thongbao="Đã xoá đơn hàng" ;
+                }
+                
+                $listdh=loadall_donhang();
+                include "donhang/listdonhang.php";
+                break;
+            case 'capnhatdh':
+                if(isset($_GET['iddh'])&&($_GET['iddh']>0)){
+                    $iddh=$_GET['iddh'];
+                    $ttm=$_POST['trangthai'];
+                    $donhang=loadone_donhang($iddh);
+                    extract($donhang);
+                }
+                if(($trangthai==1)&&($ttm==2)){
+                    capnhat_donhangtru($iddh,$ttm);
+                    $thongbaos="Trạng thái thay đổi thành công";
+                    $listdh=loadall_donhang();
+                    include "donhang/listdonhang.php";
+                    break;
+                }elseif(($trangthai==2)&&($ttm==4)){
+                    capnhat_donhangcong($iddh,$ttm);
+                    $thongbaos="Trạng thái thay đổi thành công";
+                    $listdh=loadall_donhang();
+                    include "donhang/listdonhang.php";
+                    break;
+                }elseif($ttm-$trangthai==1){
+                    capnhat_donhang($iddh,$ttm);
+                    $thongbaos="Trạng thái thay đổi thành công";
+                    $listdh=loadall_donhang();
+                    include "donhang/listdonhang.php";
+                    break;
+                }elseif($ttm==4){
+                    capnhat_donhang($iddh,$ttm);
+                    $thongbaos="Trạng thái thay đổi thành công";
+                    $listdh=loadall_donhang();
+                    include "donhang/listdonhang.php";
+                    break;
+                }else{
+                    $cthoadon=loadall_ctdonhang($iddh);
+                    $hoadon=loadone_donhang($iddh);
+                    $thongbaos="Trạng thái thay đổi không hợp lệ";
+                    include "donhang/ctdonhang.php";
+                    break;
+                }
+                
+                
+                break;    
             default:
                 include "home.php";
                 break;

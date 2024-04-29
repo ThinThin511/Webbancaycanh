@@ -40,7 +40,7 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="index.php?act=listsp">Danh sách sản phẩm</a></li>
                                 <li><a class="dropdown-item" href="index.php?act=addsp">Thêm sản phẩm mới</a></li>
-                                <li><a class="dropdown-item" href="#">Nhập thêm số lượng sản phẩm</a></li>
+                                
                             </ul>
                         </li>
                         <li class="nav-item">
