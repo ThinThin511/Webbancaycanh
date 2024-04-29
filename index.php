@@ -149,6 +149,19 @@
                 header('Location: index.php?act=viewcart&thongbaoxoa='.$encoded_data);
                 break;
             case 'lienhe':
+                if(isset($_POST['send'])){
+                    $ten=$_POST['ten'];
+                    $sdt=$_POST['sdt'];
+                    $email=$_POST['email'];
+                    $noidung=$_POST['noidung'];
+                    $email_content = "<p>Bạn có liên hệ/ý kiến từ {$ten}!</p>
+                    <p>Khách hàng có số điện thoại: {$sdt}.</p> 
+                    <p>Email khách hàng: {$email} </p>
+                    <p>Với nội dung như sau:</p>
+                    <p>{$noidung}</p>";
+                    send_mail("thienb2111865@student.ctu.edu.vn","PLANTSHOPE","Ý kiến phản hồi!",$email_content);
+                    $thongbao="Nội dung liên hệ đã được gửi thành công. Chúng tôi sẽ cố gắng phản hồi trong thời gian sớm nhất.";
+                }
                 include "view/lienhe.php";
                 break;
             default:
