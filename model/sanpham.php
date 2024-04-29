@@ -34,11 +34,15 @@ function loadall_sanpham_home(){
     $listsanpham=pdo_query($sql);
     return $listsanpham;
 }
-function loadall_sanpham_top(){
-    $sql="select * from sanpham where 1 order by luotxem desc limit 0,8";
-    
-    
-    $listsanpham=pdo_query($sql);
+function loadall_sanpham_banchay(){
+    $sql = "SELECT s.*, SUM(ctd.soluong) AS tong_soluong_ban 
+            FROM sanpham s
+            LEFT JOIN chitietdonhang ctd ON s.id = ctd.idsp
+            GROUP BY ctd.idsp
+            ORDER BY tong_soluong_ban DESC
+            LIMIT 0, 8";
+
+    $listsanpham = pdo_query($sql);
     return $listsanpham;
 }
 function loadall_sanpham_lq($id, $iddm){
@@ -55,11 +59,11 @@ function loadone_sanpham($id){
     return $sp;
 }
 
-function update_sanpham($id,$tensp,$giasp,$filename,$mota,$iddm){
+function update_sanpham($id,$tensp,$giasp,$filename,$mota,$iddm,$slct){
     if($filename!="")
-        $sql="update sanpham set name='".$tensp."', price='".$giasp."', mota='".$mota."', iddm='".$iddm."', img='".$filename."' where id=".$id;
+        $sql="update sanpham set name='".$tensp."', price='".$giasp."', mota='".$mota."', iddm='".$iddm."', soluong='".$slct."' ,img='".$filename."' where id=".$id;
     else 
-        $sql="update sanpham set name='".$tensp."', price='".$giasp."', mota='".$mota."', iddm='".$iddm."' where id=".$id;
+        $sql="update sanpham set name='".$tensp."', price='".$giasp."', mota='".$mota."', iddm='".$iddm."', soluong='".$slct."' where id=".$id;
     pdo_execute($sql);
 }
 ?>

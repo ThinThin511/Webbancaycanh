@@ -14,7 +14,9 @@
                         <img src="<?=$hinh?>" alt="..." style="min-height: 320px; max-height: 320px;width: 100%;">
                     </div>
                     <div class="col-6 ">
+                        <p class="text-danger fs-5">Số lượng hàng trong kho: <?=$soluong?></p>
                         <div class="d-flex">
+                            
                             <p class="fs-1">Giá bán: </p>
                             <p class="text-danger fs-1">&nbsp <?=$price?><sup>đ</sup></p>
                         </div>
@@ -31,11 +33,17 @@
                                     <div class="col-md-8">
                                         <input type="number" class="form-control" id="quantity" name="soluong" placeholder="Nhập số lượng" required>
                                         <input type="hidden" name="id" value="<?=$id?>">
+                                        
+                                        <input type="hidden" name="slkho" value="<?=$soluong?>">
                                         <input type="hidden" name="hinh" value="<?=$hinh?>">
                                         <input type="hidden" name="gia" value="<?=$price?>">
                                         <input type="hidden" name="ten" value="<?=$name?>">
 
                                     </div>
+                                    <?php
+                        
+                        if(isset($thongbao)&&($thongbao!="")) echo '<h5 class="alert alert-danger mt-2 mb-2 ">'.$thongbao.'</h5>';
+                    ?>
                                 </div>
                             </div>
                             <!-- Cột chứa nút "Thêm vào giỏ hàng" -->

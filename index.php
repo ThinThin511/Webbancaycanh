@@ -14,7 +14,7 @@
     }
 
     $spnew=loadall_sanpham_home();
-    $sptop=loadall_sanpham_top();
+    $sptop=loadall_sanpham_banchay();
     $danhmuc=loadall_danhmuc();
     if((isset($_GET['act']))&&($_GET['act']!="")){
         $act=$_GET['act'];
@@ -57,14 +57,24 @@
                     $hinh=$_POST['hinh'];
                     $gia=$_POST['gia'];
                     $ten=$_POST['ten'];
-                    $soluong=$_POST['soluong'];
+                    $soluongnhap=$_POST['soluong'];
+                    $soluongkho=$_POST['slkho'];
                     $fg=0;
 
+                    //Kiểm tra số lượng
+                    if($soluongnhap>$soluongkho){
+                        $thongbao="Xin lỗi! Số lượng cây trong kho không đủ.";
+                        $onesanpham=loadone_sanpham($id);
+                        extract($onesanpham);
+                        $splienquan=loadall_sanpham_lq($id,$iddm);
+                        include "view/sanphamct.php";
+                        break;
+                    }
                     //kiểm tra trùng
                     $i=0;
                     foreach ($_SESSION['mycart'] as $item) {
                         if($item[3]===$ten){
-                            $slnew=$soluong+$item[4];
+                            $slnew=$soluongnhap+$item[4];
                             $_SESSION['mycart'][$i][4]=$slnew;
                             $fg=1;
                             $thongbao="Đã cập nhật số lượng $ten vào giỏ hàng!";
@@ -73,7 +83,7 @@
                         $i++;
                     }
                     if($fg==0){
-                        $spadd=[$id,$hinh,$gia,$ten,$soluong];
+                        $spadd=[$id,$hinh,$gia,$ten,$soluongnhap];
 
                         array_push($_SESSION['mycart'],$spadd);
                         $thongbao="Đã thêm $ten vào giỏ hàng!";
@@ -104,7 +114,8 @@
                     $ghichu=$_POST['ghichu'];
                     $pttt=$_POST['pttt'];
                     $ttien=$_POST['ttien'];
-                    $ngaydathang=date('h:i:sa d/m/Y');
+                    date_default_timezone_set('Asia/Ho_Chi_Minh');
+                    $ngaydathang=date('h:i:s a d/m/Y');
                     $iddonhang=insert_donhang($ten,$email,$sdt,$diachi,$ghichu,$pttt,$ttien,$ngaydathang);
                     
                     foreach ($_SESSION['mycart'] as $cart) {
@@ -112,10 +123,12 @@
                     }
                     $_SESSION['mycart']=[];
                 }
-                $email_content = "<p>Chào bạn {$ten}</p>
-                    <p>Bạn vừa đặt hàng thành công các sản phẩm tại CỬA HÀNG NỘI THẤT của chúng tôi.</p>
+                $email_content = "<p>Chào bạn {$ten}!</p>
+                    <p>Bạn vừa đặt hàng thành công các sản phẩm tại CỬA HÀNG CÂY CẢNH của chúng tôi.</p>
                     <p>Đơn hàng sẽ được giao đến {$diachi} trong thời gian sớm nhất.</p> 
-                    <p>Tổng giá trị đơn hàng của bạn là : {$ttien} VNĐ.</p>";
+                    <p>Tổng giá trị đơn hàng của bạn là : {$ttien} VNĐ.</p>
+                    <p>Xin chân thành cảm ơn vì đã mua sắm tại cửa hàng chúng tôi.</p>
+                    <p>Trân trọng!</p>";
                 send_mail($email,$ten,"Đặt hàng thành công!",$email_content);
                 $cthoadon=loadall_ctdonhang($iddonhang);
                 $hoadon=loadone_donhang($iddonhang);

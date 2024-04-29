@@ -2,6 +2,7 @@
     include "../model/pdo.php";
     include "../model/danhmuc.php";
     include "../model/sanpham.php";
+    include "../model/cart.php";
     include "header.php";
     
     if(isset($_GET['act'])){
@@ -25,7 +26,9 @@
             
             case 'xoadm':
                 if(isset($_GET['id'])&&($_GET['id']>0)){
+                    
                     delete_danhmuc($_GET['id']);
+                    $thongbao="Đã xoá" ;
                 }
                 
                 $listdanhmuc=loadall_danhmuc();
@@ -45,7 +48,7 @@
                     $tenloai=$_POST['tenloai'];
                     $id=$_POST['id'];
                     update_danhmuc($id,$tenloai);
-                    $thongbao="Cập nhật thành công";
+                    $thongbaocn="Cập nhật thành công";
                 }
                 
                 $listdanhmuc=loadall_danhmuc();
@@ -77,7 +80,7 @@
                 break;
             case 'listsp':
                 if(isset($_POST['listok'])&&($_POST['listok'])){
-                   $kyw=$_POST['kyw']; 
+                    $kyw="";
                    $iddm=$_POST['iddm'];
 
                 }else{
@@ -92,6 +95,7 @@
             case 'xoasp':
                 if(isset($_GET['id'])&&($_GET['id']>0)){
                     delete_sanpham($_GET['id']);
+                    $thongbao="Đã xoá" ;
                 }
                 
                 $listsanpham=loadall_sanpham("",0);
@@ -113,6 +117,10 @@
                     $iddm=$_POST['iddm'];
                     $giasp=$_POST['giasp'];
                     $mota=$_POST['mota'];
+                    $slm=$_POST['slsp'];
+                    $sanpham=loadone_sanpham($id);
+                    extract($sanpham);
+                    $slct=$slm + $soluong;
                     $filename=$_FILES['anhsp']['name'];
                     $target_dir = "../upload/";
                     $target_file = $target_dir . basename($_FILES["anhsp"]["name"]);
@@ -121,15 +129,25 @@
                       } else {
                         // echo "Sorry, there was an error uploading your file.";
                       }
-                    update_sanpham($id,$tensp,$giasp,$filename,$mota,$iddm);
-                    $thongbao="Cập nhật thành công";
+                    update_sanpham($id,$tensp,$giasp,$filename,$mota,$iddm,$slct);
+                    $thongbaocn="Cập nhật thành công";
                 }
                 $listdanhmuc=loadall_danhmuc();
                 $listsanpham=loadall_sanpham("",0);
                 include "sanpham/list.php";
                 break;
-
-
+            case 'listdonhang':
+                $listdh=loadall_donhang();
+                include "donhang/listdonhang.php";
+                break;
+            case 'chitietdh':
+                if(isset($_GET['iddh'])){
+                    $dh=$_GET['iddh'];
+                }
+                $cthoadon=loadall_ctdonhang($dh);
+                $hoadon=loadone_donhang($dh);
+                include "donhang/ctdonhang.php";
+                break;
             default:
                 include "home.php";
                 break;

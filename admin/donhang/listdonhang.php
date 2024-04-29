@@ -1,18 +1,16 @@
 <div class="container">
     <div class="table-responsive ">
         <table id="donhang" class="table table-striped">
-            <h2 class="text-center ">DANH SÁCH LOẠI HÀNG</h2>
-            <?php
-                        if(isset($thongbao)&&($thongbao!="")) echo '<h5 class="alert alert-danger mt-2 mb-2 ">'.$thongbao.'</h5>';
-                        if(isset($thongbaocn)&&($thongbaocn!="")) echo '<h5 class="alert alert-success mt-2 mb-2 ">'.$thongbaocn.'</h5>';
-                    ?>
+            <h2 class="text-center ">DANH DÁCH ĐƠN HÀNG</h2>
             <thead>
                 <tr class=" align-middle">
                     <th scope="col">STT</th>
-                    <th scope="col">MÃ LOẠI</th>
-                    <th scope="col">TÊN LOẠI</th>
-                    <th scope="col">THAO TÁC</th>
-                    
+                    <th scope="col">Tên khách hàng</th>
+                    <th scope="col">Tổng hoá đơn</th>
+                    <th scope="col">Ngày đặt hàng</th>
+                    <th scope="col">Trạng thái</th>
+                    <th scope="col">Xem chi tiết</th>
+                    <th scope="col">Thao tác</th>
                     
                 </tr>
             </thead>
@@ -21,16 +19,29 @@
                     $tong=0;
                     $i=0;
                     
-                    foreach ($listdanhmuc as $danhmuc){
-                        extract($danhmuc);
-                        $xoadm='<a href="index.php?act=xoadm&id='.$id.'"><button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button></a>';
-                        
-                        $suadm='<a href="index.php?act=suadm&id='.$id.'"><button type="submit" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></button></a>';
+                    foreach ($listdh as $dh) {
+                        extract($dh);
+                        if($trangthai==0){
+                            $tt='<p class="custom-bg-0">Đơn hàng mới</p>';
+                        }elseif($trangthai==1){
+                            $tt='<p class="custom-bg-1">Đơn hàng mới</p>';
+                        }elseif($trangthai==2){
+                            $tt='<p class="custom-bg-2">Đơn hàng mới</p>';
+                        }elseif($trangthai==3){
+                            $tt='<p class="custom-bg-3">Đơn hàng mới</p>';
+                        }else{
+                            $tt='<p class="custom-bg-4">Đơn hàng mới</p>';
+                        }
+                        $xoadh='<a href="index.php?act=deletedh&iddh='.$id.'"><button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button></a>';
+                        $cthd='<a href="index.php?act=chitietdh&iddh='.$id.'"><button type="submit" class="btn btn-info">Xem chi tiết</button></a>';
                         echo'<tr class=" align-middle">
                                 <td>'.$i+'1'.'</td>
-                                <td>'.$id.'</td>
-                                <td>'.$name.'</td>
-                                <td>'.$suadm.' '.$xoadm.'</td>
+                                <td>'.$ten.'</td>
+                                <td>'.$ttien.'</td>
+                                <td>'.$ngaydathang.'</td>
+                                <td ><p class="custom-border">'.$tt.'</p></td>
+                                <td>'.$cthd.'</td>
+                                <td>'.$xoadh.'</td>
                             </tr>';
                         $i+=1;
                     }
@@ -53,11 +64,7 @@
                 <!-- Add more rows as needed -->
             </tbody>
         </table>
-    </div >
-    <div class="text-end control-btn mt-3">
-        <a href="index.php?act=adddm"><button class="btn btn-info ">Thêm danh mục mới</button></a>
     </div>
-    
 </div>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -70,10 +77,10 @@
     $(document).ready(function(){
         var table=$('#donhang').DataTable({
             "language": {
-                "lengthMenu": "Số danh mục hiển thị: _MENU_",
-                "search": "Tìm kiếm:",
-                "info":"Hiển thị _START_ - _END_ trên _TOTAL_ danh mục",
-                "emptyTable":"Không có danh mục nào được tìm thấy",
+                "lengthMenu": "Số đơn hàng hiển thị: _MENU_",
+                "search": "Tìm kiếm",
+                "info":"Hiển thị _START_ - _END_ trên _TOTAL_ đơn hàng",
+                "emptyTable":"Không có đơn hàng nào được tìm thấy",
                 "paginate": {
                     "previous": "Trước",
                     "next": "Tiếp"
@@ -107,4 +114,3 @@
         // });
     });
 </script>
-<!-- ygdfydfyhdhdg -->

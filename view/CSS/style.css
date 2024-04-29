@@ -164,3 +164,18 @@ footer{
         height: 45px; /* Chiều cao */
     
 }
+.custom-bg-0 {
+    background-color: var(--bs-success-bg-subtle);
+}
+.custom-bg-1 {
+    background-color: var(--bs-info-bg-subtle);
+}
+.custom-bg-2 {
+    background-color: var(--bs-warning-bg-subtle);
+}
+.custom-bg-3 {
+    background-color: var(--bs-danger-bg-subtle);
+}
+.custom-bg-4 {
+    background-color: var(--bs-dark-bg-subtle);
+}

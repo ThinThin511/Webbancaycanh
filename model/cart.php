@@ -17,4 +17,9 @@
         $donhang=pdo_query_one($sql);
         return $donhang;
     }
+    function loadall_donhang(){
+        $sql="select * from donhang order by id desc";
+        $listdonhang=pdo_query($sql);
+        return $listdonhang;
+    }
 ?>

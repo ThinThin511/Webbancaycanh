@@ -76,7 +76,7 @@
         <div class="new-item mt-5 mb-5 text-center">
             <div class="name-content ">
                 <img src="./view/images/banner.png" alt="">
-                <h1 class="text-success mt-2">SẢN PHẨM ĐƯỢC QUAN TÂM NHIỀU NHẤT</h1>
+                <h1 class="text-success mt-2">SẢN PHẨM BÁN CHẠY NHẤT</h1>
             </div>
         </div>
         <div class="row row-col-12 row-col-sm-6 row-col-md-4 row-col-lg-3 g-4 mb-5">
