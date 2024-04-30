@@ -1,5 +1,11 @@
 
 <div class="container " id="content">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb fs-5">
+            <li class="breadcrumb-item text-success" ><a style="text-decoration: none; color:#48c563;" href="index.php"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Giỏ hàng</li>
+        </ol>
+    </nav>
     <div class="row">
         <div class="col-9">
 

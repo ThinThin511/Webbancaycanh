@@ -101,7 +101,15 @@
                 include "view/cart/viewcart.php";
                 break;
             case 'bill':
-                
+                foreach ($_SESSION['mycart'] as $cart) {
+                    $sanpham=loadone_sanpham($cart[0]);
+                    extract($sanpham);
+                    if($cart[4]>$soluong){
+                        $thongbaos="Số lượng sản phẩm {$cart[3]} không còn đủ trong kho!";
+                        include "view/cart/viewcart.php";
+                        break;
+                    }
+                }
                 
                 include "view/cart/bill.php";
                 break;

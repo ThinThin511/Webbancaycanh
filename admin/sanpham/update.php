@@ -56,7 +56,7 @@
                     <div class="row mb10">
                         <label class="form-label" for="">Nhập số lượng muốn thêm: </label>
                         </br>
-                        <input class="form-control" type="number" name="slsp" value="">
+                        <input class="form-control" type="number" name="slsp" value="0">
                     </div>
                     <div class="d-flex">
                         <div class="text-start mt-4">

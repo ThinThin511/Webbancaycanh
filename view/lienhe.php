@@ -1,5 +1,11 @@
 
       <div class="container1" id="content">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb fs-5">
+            <li class="breadcrumb-item text-success" ><a style="text-decoration: none; color:#48c563;" href="index.php"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Liên hệ</li>
+          </ol>
+        </nav>
         <h1>Liên hệ với chúng tôi</h1>
         <p>Chúng tôi rất vui khi được hỗ trợ bạn.</p>
         <?php

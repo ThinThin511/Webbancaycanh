@@ -1,12 +1,19 @@
 <body>
-    <div class="container mt-5" id="content">
-        <div class="row">
-            <div class="col-8 chitietsp">
-                <div class="content-top mb-5 mt-5">
-                    <?php
+<?php
                         extract($onesanpham);
                         $hinh=$img_path.$img;
                     ?>
+    <div class="container mt-5" id="content">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb fs-5">
+            <li class="breadcrumb-item text-success" ><a style="text-decoration: none; color:#48c563;" href="index.php"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><?=$name?></li>
+          </ol>
+        </nav>
+        <div class="row">
+            <div class="col-8 chitietsp">
+                <div class="content-top mb-5 mt-5">
+                    
                     <h1 class="text-success"><?=$name?></h1>
                 </div>
                 <div class="row content-body mb-5">

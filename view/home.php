@@ -1,5 +1,10 @@
 <body>
     <div class="container mt-5" id="content">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active fs-5" aria-current="page"><i class="fa-solid fa-house"></i> Trang chủ</li>
+            </ol>
+        </nav>
         <div class="row">
             <div class="col-8">
             <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
