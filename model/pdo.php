@@ -69,6 +69,20 @@ function pdo_query($sql){
         unset($conn);
     }
 }
+function pdo_query1($sql, $sql_args = array()) {
+    try {
+        $conn = pdo_get_connection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($sql_args);
+        $rows = $stmt->fetchAll();
+        return $rows;
+    } catch(PDOException $e) {
+        throw $e;
+    } finally {
+        unset($conn);
+    }
+}
+
 /**
  * Thực thi câu lệnh sql truy vấn một bản ghi
  * @param string $sql câu lệnh sql

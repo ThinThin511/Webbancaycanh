@@ -202,6 +202,22 @@
             
                 include "view/chamsoc/xuongrong.php";
                 break;
+            case 'tracuu':
+                if(isset($_POST['keyw'])){
+                    $key=$_POST['keyw'];
+                    $listdonhang=loadall_donhang_search($key);
+                }
+        
+                include "view/tracuu.php";
+                break;
+            case 'chitietdh':
+                if(isset($_GET['iddh'])){
+                    $dh=$_GET['iddh'];
+                }
+                $cthoadon=loadall_ctdonhang($dh);
+                $hoadon=loadone_donhang($dh);
+                include "view/tracuuct.php";
+                break;
             default:
             include "view/home.php";
         }

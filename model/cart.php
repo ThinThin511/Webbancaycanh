@@ -137,6 +137,19 @@
     
         return $data;
     }
+    function loadall_donhang_search($email_or_phone) {
+        // Xây dựng câu truy vấn SQL để lấy tất cả đơn hàng có email hoặc số điện thoại trùng với biến đưa vào
+        $sql = "SELECT * FROM donhang WHERE email = :email_or_phone OR sdt = :email_or_phone ORDER BY id DESC";
+    
+        // Thực thi truy vấn SQL
+        $listdonhang = pdo_query1($sql, array(':email_or_phone' => $email_or_phone));
+    
+        if (!empty($listdonhang)) {
+            return $listdonhang;
+        } else {
+            return 0;
+        }
+    }
     
     
     

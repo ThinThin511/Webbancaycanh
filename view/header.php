@@ -38,6 +38,9 @@
           <li class="nav-item">
             <a class="nav-link " href="index.php?act=lienhe">Liên hệ</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link " href="index.php?act=tracuu">Tra cứu đơn hàng</a>
+          </li>
         </ul>
         <?php
         if(isset($_SESSION['mycart'])&&($_SESSION['mycart']!=[])){
