@@ -1,3 +1,4 @@
+<?php check_login(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,6 +52,16 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" href="index.php?act=listdonhang">Quản lý đơn hàng</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-user"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="logout.php">Đăng xuất</a></li>
+                                
+                                
+                            </ul>
                         </li>
                     </ul>
                 </div>
