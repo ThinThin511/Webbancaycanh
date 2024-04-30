@@ -8,6 +8,10 @@
     </nav>
     <div class="row">
         <div class="col-9">
+            <!-- <form action="index.php?act=editcart&idcart='.$i.'" method="post">
+                <input style="max-width: fit-content;" type="number">
+                <button class="btn btn-success" type="submit">Cập nhật</button>
+            </form> -->
 
         
             <h2 class="mb-4">Giỏ hàng <i class="fa-solid fa-cart-shopping"></i></h2>
@@ -44,16 +48,18 @@
                             foreach ($_SESSION['mycart'] as $cart) {
                                 $ttien = (int)$cart[2] * (int)$cart[4];
                                 $tong+=$ttien;
-                                $xoasp='<a href="index.php?act=deletecart&idcart='.$i.'"><button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button></a>';
-                                echo'<tr class="text-center align-middle">
+                                $xoasp='<a class="btn btn-danger me-1" href="index.php?act=deletecart&idcart='.$i.'"><i class="fa-solid fa-trash"></i></button></a>';
+                                echo'<form action="index.php?act=editcart&idcart='.$i.'" method="post">
+                                <tr class="text-center align-middle">
                                         <td>'.$i+'1'.'</td>
                                         <td><img src="'.$cart[1].'"  style="min-height: 80px; max-height: 80px; width:100%; max-width: 120px;min-width: 120px;"></td>
                                         <td>'.$cart[3].'</td>
-                                        <td>'.$cart[4].'</td>
+                                        <td><input name="soluong" style="max-width: fit-content;" class="form-control" type="number" value="'.$cart[4].'"></td>
                                         <td>'.$cart[2].'</td>
                                         <td>'.$ttien.'</td>
-                                        <td>'.$xoasp.'</td>
-                                    </tr>';
+                                        <td>'.$xoasp.'<button class="btn btn-success" type="submit">Cập nhật</button></td>
+                                    </tr>
+                                    </form>';
                                 $i+=1;
                             }
                             

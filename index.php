@@ -95,6 +95,21 @@
                 }
                 include "view/cart/viewcart.php";
                 break;
+            case 'editcart':
+                if(isset($_GET['idcart'])){
+                    $soluong=$_POST['soluong'];
+                    $ten=$_SESSION['mycart'][$_GET['idcart']][3];
+                    $_SESSION['mycart'][$_GET['idcart']][4]=$soluong;
+                    if($_SESSION['mycart'][$_GET['idcart']][4]==0){
+                        $thongbaos="Đã xoá $ten khỏi giỏ hàng! ";
+                        array_splice($_SESSION['mycart'],$_GET['idcart'],1);
+                        
+                    }else{
+                    $thongbao="Đã cập nhật số lượng $ten vào giỏ hàng!";}
+                }
+                
+                include "view/cart/viewcart.php";
+                break;
             case 'viewcart':
                 $thongbaos = urldecode($_GET['thongbaoxoa']);
                 
@@ -171,6 +186,11 @@
                     $thongbao="Nội dung liên hệ đã được gửi thành công. Chúng tôi sẽ cố gắng phản hồi trong thời gian sớm nhất.";
                 }
                 include "view/lienhe.php";
+                break;
+            case 'tintuc':
+                
+                
+                include "view/tintuc.php";
                 break;
             default:
             include "view/home.php";

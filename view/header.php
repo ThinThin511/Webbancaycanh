@@ -41,7 +41,7 @@
           </li>
         </ul>
         <?php
-        if(isset($_SESSION['mycart'])){
+        if(isset($_SESSION['mycart'])&&($_SESSION['mycart']!=[])){
           $tong=0;
           $count = count($_SESSION['mycart']);
           
@@ -57,7 +57,7 @@
         }else{
           echo'<div class="giohang-content">
           <a href="index.php?act=viewcart" class="me-5 giohang"> <button id="custom-btn" class="btn btn-success btn-lg">0<sup>đ</sup> <i class="fa-solid fa-cart-shopping ms-2" ></i> </button></a>
-          <span id="nut">0</span>
+          
         </div>';
         }
           
