@@ -45,6 +45,17 @@ function loadall_sanpham_banchay(){
     $listsanpham = pdo_query($sql);
     return $listsanpham;
 }
+function loadall_sanpham_banchay_4(){
+    $sql = "SELECT s.*, SUM(ctd.soluong) AS tong_soluong_ban 
+            FROM sanpham s
+            LEFT JOIN chitietdonhang ctd ON s.id = ctd.idsp
+            GROUP BY ctd.idsp
+            ORDER BY tong_soluong_ban DESC
+            LIMIT 0, 4";
+
+    $listsanpham = pdo_query($sql);
+    return $listsanpham;
+}
 function loadall_sanpham_lq($id, $iddm){
     $sql = "SELECT * FROM sanpham WHERE iddm = ? AND id <> ? LIMIT 4";
     
@@ -65,5 +76,30 @@ function update_sanpham($id,$tensp,$giasp,$filename,$mota,$iddm,$slct){
     else 
         $sql="update sanpham set name='".$tensp."', price='".$giasp."', mota='".$mota."', iddm='".$iddm."', soluong='".$slct."' where id=".$id;
     pdo_execute($sql);
+}
+
+function count_spdm($iddm){
+    $sql = "SELECT COUNT(*) AS total FROM sanpham WHERE iddm = :iddm";
+
+        // Thực thi truy vấn
+        $result = pdo_query_1($sql, array(':iddm' => $iddm));
+
+        // Lấy tổng số lượng sản phẩm từ kết quả truy vấn
+        $total = $result['total'];
+
+        // Trả về số lượng sản phẩm
+        return $total;
+}
+function demsp(){
+    $sql = "SELECT COUNT(*) AS total FROM sanpham";
+    $result = pdo_query_one($sql);
+    $total = $result['total'];
+    return $total;
+}
+function dem_het_hang(){
+    $sql = "SELECT COUNT(*) AS total FROM sanpham WHERE soluong = 0";
+    $result = pdo_query_1($sql);
+    $total = $result['total'];
+    return $total;
 }
 ?>

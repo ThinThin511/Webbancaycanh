@@ -1,7 +1,90 @@
 <div class="container">
+    <div class="row text-center d-flex justify-content-center">
+        <div class="col-md-2 mb-4 " >
+            <div class="card h-100">
+                <div class="card-body" style="background-color:#9effbd ;">
+                    <div class="row">
+                        <div class="col-8">
+                            <p ><strong>Đơn mới</strong></p>
+                            <h3 class="mb-0"><?=demtt(0)?></h3>
+                            
+                        </div>
+                        <div class="col-4 text-center d-flex align-items-center">
+                            <i class="fa-solid fa-cart-plus fs-1"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 mb-4 " >
+            <div class="card h-100">
+                <div class="card-body" style="background-color:rgb(152, 255, 255) ;">
+                    <div class="row">
+                        <div class="col-8">
+                            <p ><strong>Đang xử lí</strong></p>
+                            <h3 class="mb-0"><?=demtt(1)?></h3>
+                            
+                        </div>
+                        <div class="col-4 text-center d-flex align-items-center">
+                            <i class="fa-solid fa-gears fs-1"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 mb-4 " >
+            <div class="card h-100">
+                <div class="card-body" style="background-color:rgb(236, 255, 173) ;">
+                    <div class="row">
+                        <div class="col-8">
+                            <p ><strong>Đang giao </strong></p>
+                            <h3 class="mb-0"><?=demtt(2)?></h3>
+                            
+                        </div>
+                        <div class="col-4 text-center d-flex align-items-center">
+                            <i class="fa-solid fa-truck-fast fs-1"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 mb-4 " >
+            <div class="card h-100">
+                <div class="card-body" style="background-color:rgb(252, 172, 164) ;">
+                    <div class="row">
+                        <div class="col-8">
+                            <p ><strong>Đã giao hàng</strong></p>
+                            <h3 class="mb-0"><?=demtt(3)?></h3>
+                            
+                        </div>
+                        <div class="col-4 text-center d-flex align-items-center">
+                            <i class="fa-regular fa-circle-check fs-1"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 mb-4 " >
+            <div class="card h-100">
+                <div class="card-body" style="background-color:rgb(126, 126, 126);">
+                    <div class="row">
+                        <div class="col-8">
+                            <p ><strong>Đã huỷ</strong></p>
+                            <h3 class="mb-0"><?=demtt(4)?></h3>
+                            
+                        </div>
+                        <div class="col-4 text-center d-flex align-items-center">
+                            <i class="fa-solid fa-ban fs-1"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="table-responsive ">
         <table id="donhang" class="table table-striped">
-            <h2 class="text-center ">DANH DÁCH ĐƠN HÀNG</h2>
+
+            <h2 class="text-center ">DANH SÁCH ĐƠN HÀNG</h2>
             <?php
                         
                         if(isset($thongbao)&&($thongbao!="")) echo '<h5 class="alert alert-danger mt-2 mb-2 ">'.$thongbao.'</h5>';
@@ -11,8 +94,9 @@
                 <tr class=" align-middle">
                     <th scope="col">STT</th>
                     <th scope="col">Tên khách hàng</th>
+                    <th scope="col">Số điện thoại</th>
                     <th scope="col">Tổng hoá đơn</th>
-                    <th scope="col">Ngày đặt hàng</th>
+                    
                     <th scope="col">Trạng thái</th>
                     <th scope="col">Xem chi tiết</th>
                     <th scope="col">Thao tác</th>
@@ -42,8 +126,9 @@
                         echo'<tr class=" align-middle">
                                 <td>'.$i+'1'.'</td>
                                 <td>'.$ten.'</td>
+                                <td>'.$sdt.'</td>
                                 <td>'.$ttien.'</td>
-                                <td>'.$ngaydathang.'</td>
+                                
                                 <td ><p class="custom-border">'.$tt.'</p></td>
                                 <td>'.$cthd.'</td>
                                 <td>'.$xoadh.'</td>

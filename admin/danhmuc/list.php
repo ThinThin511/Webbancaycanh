@@ -11,6 +11,7 @@
                     <th scope="col">STT</th>
                     <th scope="col">MÃ LOẠI</th>
                     <th scope="col">TÊN LOẠI</th>
+                    <th class="text-center" scope="col">SỐ LƯỢNG SẢN PHẨM</th>
                     <th scope="col">THAO TÁC</th>
                     
                     
@@ -22,7 +23,9 @@
                     $i=0;
                     
                     foreach ($listdanhmuc as $danhmuc){
+                        
                         extract($danhmuc);
+                        $slsp=count_spdm($id);
                         $xoadm='<a href="index.php?act=xoadm&id='.$id.'"><button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button></a>';
                         
                         $suadm='<a href="index.php?act=suadm&id='.$id.'"><button type="submit" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></button></a>';
@@ -30,6 +33,7 @@
                                 <td>'.$i+'1'.'</td>
                                 <td>'.$id.'</td>
                                 <td>'.$name.'</td>
+                                <td class="text-center">'.$slsp.'</td>
                                 <td>'.$suadm.' '.$xoadm.'</td>
                             </tr>';
                         $i+=1;

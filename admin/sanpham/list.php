@@ -1,25 +1,36 @@
 <div class="container">
             <div class="text-center">
+
                 <h1>DANH SÁCH SẢN PHẨM</h1>
             </div>
             <?php
                         if(isset($thongbao)&&($thongbao!="")) echo '<h5 class="alert alert-danger mt-2 mb-2 ">'.$thongbao.'</h5>';
                         if(isset($thongbaocn)&&($thongbaocn!="")) echo '<h5 class="alert alert-success mt-2 mb-2 ">'.$thongbaocn.'</h5>';
+                        $ht=dem_het_hang();
                     ?>
-            <form class="d-flex mt-4 mb-3" action="index.php?act=listsp" method="post">
-                            <!-- <input type="text" name="kyw"> -->
-                            <select name="iddm" class="form-select" style="width:fit-content;">
-                                <option value="0" selected>Tất cả</option>
-                                <?php
-                                    foreach ($listdanhmuc as $danhmuc) {
-                                        extract($danhmuc);
-                                        echo '<option value="'.$id.'">'.$name.'</option>';
-                                    }
-                                
-                                ?>
-                            </select>
-                            <input  type="submit" class="btn btn-info ms-3" name="listok" value="Lọc">
-            </form>
+            <div class="d-flex">
+
+            
+                <form class="d-flex mt-4 mb-3" action="index.php?act=listsp" method="post">
+                                <!-- <input type="text" name="kyw"> -->
+                                <select name="iddm" class="form-select" style="width:fit-content;">
+                                    <option value="0" selected>Tất cả</option>
+                                    <?php
+                                        foreach ($listdanhmuc as $danhmuc) {
+                                            extract($danhmuc);
+                                            echo '<option value="'.$id.'">'.$name.'</option>';
+                                        }
+                                    
+                                    ?>
+                                </select>
+                                <input  type="submit" class="btn btn-info ms-3" name="listok" value="Lọc">
+                </form>
+                
+                <button class="btn btn-warning ms-auto p-2" >
+                    <p><i class="fa-solid fa-triangle-exclamation fs-1"></i></p>
+                    <p style="font-size: 20px;">Sản phẩm hết hàng: <?=$ht?></p>
+                </button>
+            </div>
             <div class="row fromcontent">
                 
                     <div class="table-responsive ">
@@ -33,7 +44,7 @@
                                     <th>ẢNH</th>
                                     <th>GIÁ SẢN PHẨM</th>
                                     <th>SỐ LƯỢNG</th>
-                                    <th>MÔ TẢ</th>
+                                    
                                     <th>THAO TÁC</th>
                                 </tr>
                             </thead>
@@ -59,7 +70,7 @@
                                             <td><img src="'.$hinhpath.'" alt="" style="min-height: 80px; max-height: 80px; width:100%; max-width: 120px;min-width: 120px;"></td>
                                             <td>'.$price.'</td>
                                             <td>'.$soluong.' </td>
-                                            <td>'.$mota.'</td>
+                                            
                                             <td>'.$suasp.' '.$xoasp.'</td>
                                         </tr>';
                                     $i++;

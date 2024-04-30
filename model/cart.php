@@ -69,4 +69,77 @@
         $sql="update donhang set trangthai='".$trangthai."' where id=".$iddh;
         pdo_execute($sql);
     }
+    function demtt($status){
+        $sql = "SELECT COUNT(*) AS total FROM donhang WHERE trangthai = :status";
+        $result = pdo_query_1($sql, array(':status' => $status));
+        $total = $result['total'];
+        return $total;
+    }
+    function calculate_total_revenue_this_month() {
+        
+            // Lấy ngày đầu tiên và cuối cùng của tháng hiện tại
+            $first_day_of_month = date('Y-m-01');
+            $last_day_of_month = date('Y-m-t');
+    
+            // Xây dựng câu truy vấn SQL để tính tổng tiền trong tháng
+            $sql = "SELECT SUM(ttien) AS total_revenue FROM donhang 
+                    WHERE STR_TO_DATE(ngaydathang, '%h:%i:%s %p %d/%m/%Y') 
+                    BETWEEN STR_TO_DATE(:first_day_of_month, '%Y-%m-%d') 
+                    AND STR_TO_DATE(:last_day_of_month, '%Y-%m-%d')
+                    AND trangthai = 3";
+            
+            // Thực thi truy vấn SQL
+            $result = pdo_query_1($sql, array(':first_day_of_month' => $first_day_of_month, ':last_day_of_month' => $last_day_of_month));
+    
+            // Lấy tổng tiền từ kết quả truy vấn
+            $total_revenue = $result['total_revenue'];
+    
+            return $total_revenue;
+       
+    }
+    function calculate_total_revenue_for_recent_months() {
+        // Lấy ngày đầu tiên và cuối cùng của tháng hiện tại
+        $current_month = date('n');
+        $first_day_of_current_month = date('Y-m-01');
+        $last_day_of_current_month = date('Y-m-t');
+    
+        // Tạo mảng chứa thông tin về doanh số của 4 tháng gần nhất
+        $data = array();
+    
+        // Lặp qua 4 tháng gần nhất theo thứ tự ngược lại
+        for ($i = 3; $i >= 0; $i--) {
+            // Lấy tháng hiện tại trừ đi số tháng đã lặp
+            $month = $current_month - $i;
+            if ($month <= 0) {
+                $month += 12; // Nếu tháng âm, quay lại tháng cuối năm trước đó
+            }
+            
+            // Lấy ngày đầu tiên và cuối cùng của tháng
+            $first_day_of_month = date('Y-m-01', strtotime(date('Y-' . $month . '-01')));
+            $last_day_of_month = date('Y-m-t', strtotime(date('Y-' . $month . '-01')));
+    
+            // Xây dựng câu truy vấn SQL để tính tổng tiền trong tháng
+            $sql = "SELECT SUM(ttien) AS total_revenue FROM donhang 
+                    WHERE STR_TO_DATE(ngaydathang, '%h:%i:%s %p %d/%m/%Y') 
+                    BETWEEN STR_TO_DATE(:first_day_of_month, '%Y-%m-%d') 
+                    AND STR_TO_DATE(:last_day_of_month, '%Y-%m-%d')
+                    AND trangthai = 3";
+            
+            // Thực thi truy vấn SQL
+            $result = pdo_query_1($sql, array(':first_day_of_month' => $first_day_of_month, ':last_day_of_month' => $last_day_of_month));
+    
+            // Lấy tổng tiền từ kết quả truy vấn
+            $total_revenue = $result['total_revenue'];
+    
+            // Thêm thông tin về doanh số của tháng vào mảng data
+            $data[] = array('month' => $month, 'Sales' => $total_revenue);
+        }
+    
+        return $data;
+    }
+    
+    
+    
+    
+    
 ?>
