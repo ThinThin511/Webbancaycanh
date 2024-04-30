@@ -192,6 +192,16 @@
                 
                 include "view/tintuc.php";
                 break;
+            case 'vp':
+            
+            
+                include "view/chamsoc/vanphong.php";
+                break;
+            case 'xr':
+            
+            
+                include "view/chamsoc/xuongrong.php";
+                break;
             default:
             include "view/home.php";
         }
