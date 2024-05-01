@@ -42,6 +42,7 @@
                     <label class="form-check-label" for="trangthai">
                         Đã huỷ
                     </label>
+                    <input name="lydohuy" class="form-control" type="text" placeholder="Lý do huỷ đơn...">
                 </div>
                 <button type="submit" class="btn btn-warning">Cập nhật trạng thái</button>
             </form>

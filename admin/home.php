@@ -26,7 +26,7 @@
                 <div class="card h-100">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-8">
+                            <div class="col-8 text-center">
                                 <h3 class="mb-0"><?=demtt(0)?></h3>
                                 <p class="text-muted">Đơn hàng mới</p>
                             </div>
@@ -43,7 +43,7 @@
                 <div class="card h-100">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-8">
+                            <div class="col-8 text-center">
                                 <h3 class="mb-0"><?=calculate_total_revenue_this_month()?> VNĐ</h3>
                                 <p class="text-muted">Doanh thu trong tháng</p>
                             </div>

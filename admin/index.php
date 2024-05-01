@@ -4,6 +4,7 @@
     include "../model/danhmuc.php";
     include "../model/sanpham.php";
     include "../model/cart.php";
+    include "../phpmailer/sendmail.php";
     include "header.php";
     
     if(isset($_GET['act'])){
@@ -177,15 +178,33 @@
                     $listdh=loadall_donhang();
                     include "donhang/listdonhang.php";
                     break;
+                }elseif(($trangthai==3)&&($ttm==4)){
+                    $cthoadon=loadall_ctdonhang($iddh);
+                    $hoadon=loadone_donhang($iddh);
+                    $thongbaos="Trạng thái thay đổi không hợp lệ";
+                    include "donhang/ctdonhang.php";
+                    break;
                 }elseif($ttm-$trangthai==1){
                     capnhat_donhang($iddh,$ttm);
                     $thongbaos="Trạng thái thay đổi thành công";
                     $listdh=loadall_donhang();
                     include "donhang/listdonhang.php";
                     break;
-                }elseif($ttm==4){
+                }elseif(($ttm==4)&&($trangthai!=3)){
                     capnhat_donhang($iddh,$ttm);
                     $thongbaos="Trạng thái thay đổi thành công";
+                    if(isset($_POST['lydohuy'])){
+                        $lydo=$_POST['lydohuy'];
+                    }else{
+                        $lydo="sự cố ngoài ý muốn!";
+                    }
+                    $email_content = "<p>Chào bạn {$ten}!</p>
+                    <p>Rất tiếc đơn hàng bạn đã đặt tại CỬA HÀNG CÂY CẢNH của chúng tôi đã bị huỷ.</p>
+                    <p>Vì lý do: {$lydo} .</p> 
+                    <p>Chúng tôi rất lấy làm tiếc vì sự cố này.</p>
+                    <p>Xin chân thành xin lỗi, hi vọng có cơ hội được phục vụ bạn trong tương lai.</p>
+                    <p>Trân trọng!</p>";
+                    send_mail($email,$ten,"Đon hàng đã bị huỷ!",$email_content);
                     $listdh=loadall_donhang();
                     include "donhang/listdonhang.php";
                     break;

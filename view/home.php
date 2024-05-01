@@ -10,13 +10,13 @@
             <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                    <img src="./view/images/Logo.PNG" class="d-block w-100 " alt="...">
+                    <img src="./view/images/slide-vuoncay5.jpg" class="d-block w-100 " alt="...">
                     </div>
                     <div class="carousel-item">
-                    <img src="./view/images/1.webp" class="d-block w-100" alt="...">
+                    <img src="./view/images/banner-the-gioi-cay-va-hoa-961x330.png" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                    <img src="./view/images/2.webp" class="d-block w-100" alt="...">
+                    <img src="./view/images/vuon-cay-viet-banner-new.jpg" class="d-block w-100" alt="...">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
