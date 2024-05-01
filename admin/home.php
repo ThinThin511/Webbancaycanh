@@ -127,6 +127,9 @@
         datasets: [
             {
             label: "Doanh số",
+            backgroundColor: "rgba(0,255,0,0.3)",
+            borderColor:"rgb(0,255,0)",
+            borderWidth:1,
             data: data1.map((row) => row.Sales),
             },
         ],
